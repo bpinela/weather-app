@@ -33,7 +33,6 @@ export const useWeatherData = (defaultCity = 'Miami'): UseWeatherData => {
     }
   }
 
-  // Load default city on mount
   useEffect(() => {
     searchWeather(defaultCity)
   }, [defaultCity])
