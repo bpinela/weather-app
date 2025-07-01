@@ -1,6 +1,6 @@
 export type WeatherData = {
   city: string
-  temperature: string
+  temperature: number
   weather: WeatherCondition[]
   forecast: ForecastDay[]
 }
