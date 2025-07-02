@@ -5,7 +5,10 @@ export const WeatherSkeleton = () => {
     <>
       <div className="text-center mb-8 md:mb-12">
         <div className="mb-6">
-          <div className="w-24 h-24 md:w-32 md:h-32 mx-auto bg-white/20 rounded-full animate-pulse" />
+          <div
+            className="w-24 h-24 md:w-32 md:h-32 mx-auto bg-white/20 rounded-full animate-pulse"
+            data-testid="main-icon-skeleton"
+          />
         </div>
         <div className="space-y-4">
           <div className="h-12 md:h-16 lg:h-20 bg-white/20 rounded-lg mx-auto w-64 animate-pulse" />
@@ -19,6 +22,7 @@ export const WeatherSkeleton = () => {
           {Array.from({ length: 5 }).map((_, index) => (
             <Card
               key={index}
+              data-testid="skeleton-card"
               className="bg-white/20 backdrop-blur-sm border-0 p-8"
             >
               <div className="space-y-3">

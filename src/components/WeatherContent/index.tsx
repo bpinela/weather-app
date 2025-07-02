@@ -39,6 +39,7 @@ export const WeatherContent = ({
                   {weatherData.forecast.slice(0, 5).map((forecast, index) => (
                     <Card
                       key={index}
+                      data-testid="forecast-card"
                       className="bg-white/20 backdrop-blur-sm border-0 p-4 text-center space-y-3"
                     >
                       <div className="text-sm md:text-2xl font-medium text-white/90">

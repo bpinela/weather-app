@@ -4,7 +4,7 @@ import { WeatherContent } from '@/components/WeatherContent'
 import { Sidebar } from '@/components/Sidebar'
 
 export default function App() {
-  const { weatherData, loading, error, searchWeather } = useWeatherData('Miami')
+  const { weatherData, loading, error, searchWeather } = useWeatherData()
   const { searchInputRef, handleKeyPress } = useSearch({
     onSearch: searchWeather,
     disabled: loading,
