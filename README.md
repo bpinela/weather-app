@@ -1,69 +1,159 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisites
 
-Currently, two official plugins are available:
+Before running this weather forecast application, ensure you have the following installed on your system:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Node.js** (version 18.0 or higher)
+- **npm** (version 8.0 or higher) or **yarn** (version 1.22 or higher)
+- **Git** (for cloning the repository)
 
-## Expanding the ESLint configuration
+### Verify Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+\`\`\`bash
+node --version
+npm --version
+git --version
+\`\`\`
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 1. Clone the Repository
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+\`\`\`bash
+git clone https://github.com/bpinela/weather-app
+cd weather-app
+\`\`\`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+\`\`\`bash
+npm install
+\`\`\`
+_or if using yarn:_
+\`\`\`bash
+yarn install
+\`\`\`
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3. Environment Setup
+
+Create a `.env` file in the root directory:
+\`\`\`bash
+cp .env.example .env
+\`\`\`
+
+Add your weather API configuration:
+\`\`\`env
+VITE_WEATHER_API_KEY=your_openweathermap_api_key_here
+\`\`\`
+
+> **Note:** Get your free API key from [OpenWeatherMap](https://openweathermap.org/api)
+
+## Running the Application
+
+### Development Mode
+
+Start the development server with hot reload:
+\`\`\`bash
+npm run dev
+\`\`\`
+
+The application will be available at: `http://localhost:5173`
+
+### Preview Production Build
+
+To preview the production build locally:
+\`\`\`bash
+npm run build
+npm run preview
+\`\`\`
+
+## Available Scripts
+
+| Script            | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm run dev`     | Start development server with hot reload |
+| `npm run build`   | Build the application for production     |
+| `npm run preview` | Preview the production build locally     |
+| `npm run lint`    | Run ESLint to check code quality         |
+| `npm run format`  | Format code using Prettier               |
+| `npm run test`    | Run unit tests with Vitest               |
+| `npm run prepare` | Set up Husky git hooks                   |
+
+## Testing
+
+### Run Tests
+
+\`\`\`bash
+npm run test
+\`\`\`
+
+### Run Tests in Watch Mode
+
+\`\`\`bash
+npm run test -- --watch
+\`\`\`
+
+### Run Tests with Coverage
+
+\`\`\`bash
+npm run test -- --coverage
+\`\`\`
+
+## Development Workflow
+
+### Code Quality Checks
+
+The project includes automated code quality checks:
+
+1. **Pre-commit hooks** (via Husky) automatically run:
+   - ESLint for code linting
+   - Prettier for code formatting
+   - TypeScript compilation check
+
+2. **Manual quality checks:**
+   \`\`\`bash
+   npm run lint # Check for linting errors
+   npm run format # Format all files
+   \`\`\`
+
+### Git Commit Convention
+
+This project uses conventional commits. Format your commits like:
+\`\`\`bash
+git commit -m "feat: add weather search functionality"
+git commit -m "fix: resolve API timeout issue"
+git commit -m "docs: update README with setup instructions"
+\`\`\`
+
+## Project Structure
+
+\`\`\`
+weather-app/
+├── src/
+│ ├── components/ # React components
+│ │ ├── Sidebar/ # Navigation sidebar
+│ │ ├── Skeleton/ # Loading skeletons
+│ │ ├── ui/ # Reusable UI components
+│ │ └── WeatherContent/ # Main weather display
+│ ├── hooks/ # Custom React hooks
+│ │ ├── useSearch.ts # Search functionality
+│ │ └── useWeatherData.ts # Weather data fetching
+│ ├── lib/ # Utility functions
+│ │ ├── utils.ts # General utilities
+│ │ └── weather.icon.ts # Weather icon mappings
+│ ├── services/ # API services
+│ │ └── weather-api.ts # Weather API integration
+│ ├── types/ # TypeScript definitions
+│ │ ├── openweathermap.ts # OpenWeatherMap API types
+│ │ └── weather.ts # Weather data types
+│ └── test/ # Test configuration
+├── public/ # Static assets
+├── .env # Environment variables
+├── package.json # Dependencies and scripts
+└── README.md # This file
+\`\`\`
+
+## 📄 License
+
+This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the LICENSE file for details.
